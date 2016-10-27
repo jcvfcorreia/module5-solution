@@ -1,0 +1,38 @@
+<div id="main-content" class="container">
+    <h2 id="menu-categories-title" class="text-center">My Informations</h2><br>
+  <div ng-if = "myInfoCtrl.registered">
+    Firstname : <input type="text" name="firstname" ng-model="myInfoCtrl.info.firstname" readonly>
+    <br>
+
+    Lastname : <input type="text" name="lastname" ng-model="myInfoCtrl.info.lastname" readonly>
+    <br>
+
+    Email : <input type="email" name="email" ng-model="myInfoCtrl.info.email" size="30" readonly>
+    <br>
+
+    Phone : <input type="text" name="phone" ng-model="myInfoCtrl.info.phone" readonly>
+    <br><br>
+
+  <div>Favorite dish :</div>
+    <div class="menu-item-tile col-md-6" ng-if="myInfoCtrl.dish"><br>
+      <div class="row">
+        <div class="col-sm-5">
+          <div class="menu-item-photo">
+            <div>{{myInfoCtrl.menuItem.short_name}}</div>
+            <img class="img-responsive" width="250" height="150" ng-src="{{myInfoCtrl.basePath}}/images/{{myInfoCtrl.menuItem.short_name}}.jpg" alt="{{myInfoCtrl.menuItem.name}}">
+          </div>
+          <div class="menu-item-price">{{myInfoCtrl.menuItem.price_small | currency}}<span> {{myInfoCtrl.menuItem.small_portion_name}}</span> {{myInfoCtrl.menuItem.price_large | currency}} <span>{{myInfoCtrl.menuItem.large_portion_name}}</span></div>
+        </div>
+        <div class="menu-item-description col-sm-7">
+          <h3 class="menu-item-title">{{myInfoCtrl.menuItem.name}}</h3>
+          <p class="menu-item-details">{{myInfoCtrl.menuItem.description}}</p>
+        </div>
+      </div>
+      <hr class="visible-xs">
+    </div>
+  </div>
+
+  <div ng-if ="myInfoCtrl.registered==false" class="text-center">
+      <a ui-sref="public.signup" style= "color :white">Not Signed Up Yet. Sign up Now!</a>
+  </div>
+</div>
